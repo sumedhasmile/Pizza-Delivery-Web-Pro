@@ -1,0 +1,12 @@
+{% extends 'pizzaapp/base.html' %}
+{% block content %}
+{% for order in orders %}
+<div style = "margin: 50px "class ="alert alert-warning" role= "alert">
+<p>{{order.username}}</p>
+
+<p>{{order.address}}</p>
+<p>{{order.ordereditems}}</p>
+<p>status: {{order.status}}</p>	
+</div>
+{% endfor %}
+{% endblock %}

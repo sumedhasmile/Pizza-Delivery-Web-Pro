@@ -1,0 +1,27 @@
+{% extends 'pizzaapp/base.html' %}
+{% load static %}
+{% block content %}
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand">Welcome </a>
+  <a class = "btn btn-danger" href="/loginuser/">Login</a>
+ 
+</nav>
+
+	{% for message in messages %}
+	<p style="text-align: center; font-size: 20px;" class="alert alert-warning">{{message}}</p>
+	{% endfor %}
+
+<div class="container-fluid" style= "position: relative; background-size:  cover; height: 900px; background-image :url({% static 'pizzaapp/pizza.jpeg'%});  ">
+	<div style="position :absolute; top: 50px; right: 20px; width: 500px; height: 300px; background-color: black; padding: 40px "  class="container">
+		
+		<form method="post" action="/signupuser/">
+			{% csrf_token %}
+			<h1 style="color: white">SIGN UP! </h1>
+			<input class = "form-control" placeholder = "username" type="text" name="username" style="margin-bottom: 10px">
+			<input class = "form-control" placeholder="password" type="password" name="password" style="margin-bottom: 10px">
+			<input class = "form-control" placeholder = "email" type="text" name="email" style="margin-bottom: 10px">
+			<input style = "display: block;margin: auto; margin-top: 20px" class = "btn btn-success" type="submit" name="">
+		</form>
+	</div>
+</div>
+{% endblock %}

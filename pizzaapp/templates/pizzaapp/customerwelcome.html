@@ -1,0 +1,50 @@
+{% extends 'pizzaapp/base.html' %}
+{% block content %}
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand">Welcome {{user.username}} </a>
+  <a class="navitem" style="text-decoration: none;color: black;" href="/userorders/">My orders</a>
+  <a class = "btn btn-danger" href="/userlogout/">Logout</a>
+ 
+</nav>
+{% for message in messages %}
+<p style="color: green; text-align: center;">{{message}}</p>
+{% endfor %}
+<form method="post" action="/placeorder/">
+{% csrf_token %}
+<div class="container" style="width: 90%; display: block;margin: auto; margin-top: 50px; margin-right: 70px">
+	<table class = "table table-dark" style = "width: 50% ">
+		<thead>
+	<tr>
+		
+		<th scope="col">Pizza Name</th>
+		<th scope="col">Price</th>
+		<th scope="col">Quantity</th>
+		
+
+	</tr>
+	</thead>
+	<tbody>
+	{% for pizza in pizzas %}
+	<tr>
+		
+		<td> {{pizza.name }}</td>
+		<td> {{ pizza.price }}</td>
+		<td><input type="number"  name = "{{pizza.id }}"  min ="0" value="0"  style="width: 70px"> </td>
+	</tr>
+	{% endfor %}
+	</tbody>
+</table>
+
+
+</div>
+
+<input type="text" placeholder="Address" name="address" style="width: 400px;margin-left:350px; margin-top :70px">
+<input type="submit"  style=" margin-left: 100px; " class="btn btn-success" value="Place order" >
+
+</form>
+{% endblock %}
+
+
+
+
+
